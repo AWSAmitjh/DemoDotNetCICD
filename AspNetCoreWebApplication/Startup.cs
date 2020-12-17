@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Builder;
 
 namespace AspNetCoreWebApplication
 {
@@ -47,11 +48,15 @@ namespace AspNetCoreWebApplication
                 app.UseHsts();
             }
 
+            Amazon.XRay.Recorder.Handlers.AwsSdk.AWSSDKHandler.RegisterXRayForAllServices();
+            app.UseXRay("XRayAspNetCoreSample");
+
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
 
             app.UseRouting();
+            
 
             app.UseEndpoints(endpoints =>
             {
