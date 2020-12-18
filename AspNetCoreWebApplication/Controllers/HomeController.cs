@@ -14,7 +14,7 @@ namespace AspNetCoreWebApplication.Controllers
         static IAmazonS3 client;
         public IActionResult Index()
         {
-            ViewData["Message"] = "Deployed using AWS Code Services !!";            
+            ViewData["Message"] = "Deployed using AWS Code* Services !!";            
             return View();
         }
 
