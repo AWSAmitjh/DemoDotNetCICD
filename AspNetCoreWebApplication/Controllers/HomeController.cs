@@ -26,18 +26,13 @@ namespace AspNetCoreWebApplication.Controllers
 
         static string ListingBuckets()
         {
-            string strS3buckets = "You own Bucket with name: ";
+            string strS3buckets = "You own Bucket count: ";
             try
             {
                 
                 client = new AmazonS3Client();
                 Task<ListBucketsResponse> response = ListBucketsAsync();
-                
-                foreach (S3Bucket bucket in response.Result.Buckets)
-                {
-                    strS3buckets = strS3buckets + " , " + bucket.BucketName;
-                }
-
+                strS3buckets = strS3buckets + " : " + response.Result.Buckets.Count;
                 return strS3buckets;
             }
             catch (AmazonS3Exception amazonS3Exception)
