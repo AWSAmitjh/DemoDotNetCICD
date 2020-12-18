@@ -14,10 +14,13 @@ namespace AspNetCoreWebApplication.Controllers
         static IAmazonS3 client;
         public IActionResult Index()
         {
-            ViewData["Message"] = ListingBuckets();
+            ViewData["Message"] = "Deployed using AWS Code Services !!";            
             return View();
         }
 
+
+
+        //ViewData["Message"] = ListingBuckets();
         public IActionResult Error()
         {
             ViewData["Message"] = "We've encountered an error :(";
